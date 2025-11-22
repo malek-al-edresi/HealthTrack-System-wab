@@ -3,10 +3,10 @@
 // Database connection using PDO (MySQL)
 // IMPORTANT: Change these values to match your InfinityFree/MySQL settings.
 
-$DB_HOST = getenv('DB_HOST') ?: 'localhost';      // e.g. sqlXXX.epizy.com on InfinityFree
+$DB_HOST = getenv('DB_HOST') ?: 'sql211.infinityfree.com';      // e.g. sqlXXX.epizy.com on InfinityFree
 $DB_NAME = getenv('DB_NAME') ?: 'healthtrack';    // your database name
-$DB_USER = getenv('DB_USER') ?: 'root';           // your db username
-$DB_PASS = getenv('DB_PASSWORD') ?: '';           // your db password
+$DB_USER = getenv('DB_USER') ?: 'if0_40484502';           // your db username
+$DB_PASS = getenv('DB_PASSWORD') ?: 'UKRgrkoJarKn';           // your db password
 
 $options = [
     PDO::ATTR_ERRMODE            => PDO::ERRMODE_EXCEPTION,
