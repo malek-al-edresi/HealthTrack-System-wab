@@ -166,4 +166,4 @@ Call Me
 -------
 Linkedin  : www.linkedin.com/in/malek-al-edresi
 Call      : +967-778888730
-Instagram : dde.mtc
+Instagram : dde.mt
