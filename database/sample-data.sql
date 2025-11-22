@@ -1,4 +1,4 @@
-USE healthtrack;
+USE if0_40484502_healthtrack;
 
 -- Sample patients
 INSERT INTO patients (name, age, patient_type, conditions)

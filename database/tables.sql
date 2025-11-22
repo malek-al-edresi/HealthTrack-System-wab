@@ -1,4 +1,4 @@
-USE healthtrack;
+USE if0_40484502_healthtrack;
 
 -- Patients (chronic & elderly)
 CREATE TABLE IF NOT EXISTS patients (
