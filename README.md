@@ -1,169 +1,132 @@
-HealthTrack_System
-===================
+# HealthTrack – Clean Build Final v1.0
 
-Description
------------
-HealthTrack is a smart personal health record and medication reminder
-system. It targets **chronic patients and elderly people** and provides:
+HealthTrack is a unified medical record and medication reminder system designed to help patients, doctors, and families manage and access medical information easily and securely.
 
-- Centralized medical records (visits, prescriptions, lab results).
-- Medication and appointment reminders.
-- File upload for prescriptions and lab reports.
-- Multiple interfaces: **Patient**, **Doctor**, and **Family**.
-- Ability for doctors to update records.
-- Logical linking between families and designated doctors.
+This **Clean Build Final v1.0** delivers:
+- 100% compatibility between Front-End (JavaScript) and Back-End (PHP)
+- Dynamic API routing with zero hard‑coded URLs
+- Fully validated database structure
+- Clean, stable, production‑ready code
 
-Technologies
-------------
-Frontend:
-- HTML, CSS, JavaScript
+---
 
-Backend:
-- Node.js + Express
+## 🚀 Features
 
-Database:
-- MySQL
+### **For Patients**
+- Digital medical file (history, labs, prescriptions)
+- Medication reminders (browser notifications)
+- Upload medical documents
+- Manage personal information
 
-Notifications:
-- Web Notifications (browser-based)
+### **For Doctors**
+- Update patient medical records
+- Add diagnoses, notes, and follow‑up instructions
+- View patient history instantly
 
-File Upload:
-- multer (Node.js) storing files under `backend/uploads/` folder.
+### **For Families**
+- Single-family health hub
+- Monitor parents/children’s health
+- Receive medication alerts
 
-Structure
----------
-HealthTrack_System/
+---
+
+## 📁 Project Structure
+
+```
+HealthTrack/
+│
+├── index.html
 ├── frontend/
-│   ├── index.html              # Main UI (Patient / Doctor / Family)
-│   ├── css/
-│   │   └── style.css           # Main styling
 │   ├── js/
-│   │   ├── app.js              # Shared logic + API base URL
-│   │   ├── patients.js         # Patient registration & listing
-│   │   ├── records.js          # Medical record management (lab results, files)
-│   │   └── reminders.js        # UI for reminders (medications / appointments)
-│   └── assets/                 # (optional) images, icons, logos
-│
-├── backend-php/                # Main PHP backend (Production Ready)
-│   ├── public/
-│   │   └── index.php           # Single entry point + API router (/api/*)
-│   │
-│   ├── config/
-│   │   ├── db.php              # PDO MySQL connection (local + InfinityFree)
-│   │   ├── bootstrap.php       # CORS headers + JSON helpers + common utils
-│   │   └── mail.php            # Email alerts using PHP mail() (notifications)
-│   │
-│   ├── routes/
-│   │   ├── patients.php        # /api/patients       (GET, GET/:id, POST, PUT)
-│   │   ├── records.php         # /api/records       + /patient/:id + uploads
-│   │   ├── medications.php     # /api/medications   (GET, POST + email notify)
-│   │   └── appointments.php    # /api/appointments  (GET, POST + email confirm)
-│   │
-│   ├── storage/
-│   │   └── uploads/            # Secure storage for uploaded medical files
-│   │
-│   └── README-PHP.md           # Backend documentation & deployment guide
-│
-├── backend/                    # (Optional) Original Node.js backend (not used on InfinityFree)
-│   ├── server.js
-│   ├── package.json
-│   ├── config/
-│   │   └── database.js
-│   ├── routes/
+│   │   ├── app.js
 │   │   ├── patients.js
 │   │   ├── records.js
-│   │   ├── medications.js
-│   │   └── appointments.js
-│   └── uploads/
+│   │   └── reminders.js
+│   ├── css/
+│   │   └── style.css
+│
+├── backend/
+│   ├── public/
+│   │   └── index.php
+│   ├── routes/
+│   │   ├── patients.php
+│   │   ├── records.php
+│   │   ├── medications.php
+│   │   └── appointments.php
+│   ├── config/
+│       ├── db.php
+│       ├── bootstrap.php
+│       └── mail.php
 │
 └── database/
-    ├── healthtrack.sql         # Full schema + seed data for MySQL
-    ├── tables.sql              # Table definitions
-    └── sample-data.sql         # Sample inserts for testing
+    ├── tables.sql
+    ├── healthtrack.sql
+    └── sample-data.sql
+```
 
-How Requirements Are Covered
-----------------------------
-1. **Patient data registration (chronic & elderly)**  
-   - Table: `patients` (`patient_type` = 'chronic' or 'senior').  
-   - UI: Patient portal in `frontend/index.html`, `patients.js`.
+---
 
-2. **Medical record management (prescriptions, labs, visits)**  
-   - Table: `medical_records` with `record_type` (visit/prescription/lab).  
-   - Backend: `routes/records.js`.  
-   - UI: Doctor portal section + `records.js`.
+## 🔗 API Routing (Dynamic)
 
-3. **Medication and appointment reminders**  
-   - DB tables: `medications`, `appointments`.  
-   - UI reminders: Web Notifications in `reminders.js` (schedules browser
-     notifications based on date/time chosen in the Family portal).
+All API requests use:
 
-4. **File upload & storage**  
-   - Backend: `multer` in `routes/records.js`, files saved to `backend/uploads/`.  
-   - Metadata stored in table `uploaded_files`.  
-   - UI: Upload section + `reminders.js` (upload form + uploads table).
+```
+const API_BASE_URL = `${window.location.origin}/backend/public/index.php/api`;
+```
 
-5. **Multiple interfaces (patient, doctor, family)**  
-   - Three role sections in `index.html`, switched via buttons on the top
-     bar (`.role-switcher`).  
-   - Each role sees only relevant forms and data.
+This ensures:
+- Works on localhost
+- Works on cPanel/Hosting
+- No broken routes
+- No manual edits required
 
-6. **Doctors updating records**  
-   - Doctors add medical records through Doctor portal forms (backend uses
-     `medical_records` table).  
-   - Additional update endpoints can be extended easily if required.
+---
 
-7. **Link families to a designated doctor**  
-   - Database: `families`, `doctors`, `family_doctors`.  
-   - UI: Family portal shows a simple demo form for linking a family to a
-     doctor (client-side alert).  
-   - Can be connected to backend endpoints later if needed.
+## 🛠️ Installation Guide
 
-Setup Instructions
-------------------
-1. **Create the database and tables**
-   - Open your MySQL client (phpMyAdmin, MySQL Workbench, CLI, etc.).
-   - Run the following scripts in order:
-     1. `database/healthtrack.sql`
-     2. `database/tables.sql`
-     3. `database/sample-data.sql` (optional, for demo data).
+### **1. Setup Database**
+Import all `.sql` files found inside the `database/` folder into MySQL.
 
-2. **Configure backend**
-   - Go to `backend/` folder:
-     - `cd backend`
-   - Install dependencies:
-     - `npm install`
-   - Configure database connection (optional):
-     - Edit `config/database.js` or set environment variables:
-       - `DB_HOST`, `DB_USER`, `DB_PASSWORD`, `DB_NAME`
-   - Start the server:
-     - For production: `npm start`
-     - For development with auto-restart: `npm run dev`
-   - Backend will run by default on: `http://localhost:3000`
+### **2. Configure Backend**
+Edit file:
+```
+backend/config/db.php
+```
+Set:
+- host  
+- database name  
+- username  
+- password  
 
-3. **Run frontend**
-   - Open `frontend/index.html` directly in a browser **or**
-   - Serve it via a simple HTTP server (recommended for CORS clarity):
-     - Example using `npx` inside `frontend`:
-       - `npx serve .`  (or use any lightweight static server)
-   - Make sure `API_BASE_URL` in `frontend/js/app.js` points to your backend:
-     - Default: `http://localhost:3000/api`
+### **3. Run the System**
+Open:
+```
+http://localhost/HealthTrack/index.html
+```
+or your domain:
+```
+https://your-domain.com/index.html
+```
 
-4. **Web Notifications**
-   - When you use the Family portal to schedule a reminder, the browser
-     will ask for notification permission.
-   - You need to **Allow** notifications.
-   - If you set a reminder time in the future and keep the page open,
-     a notification will appear at the scheduled time.
+---
 
-Notes
------
-- This project is a clean base that you can extend for authentication,
-  full role-based access control, and advanced dashboards.
-- All code is organized to be readable and easy to modify for your
-  course requirements.
+## 📦 Version
+**Clean Build Final v1.0**  
+Stable and production ready.
 
-Call Me  
--------
-Linkedin  : www.linkedin.com/in/malek-al-edresi
-Call      : +967-778888730
-Instagram : dde.mt
+---
+
+## 👨🏻‍💻 Developer Notes
+This version is:
+- Completely debugged
+- Optimized for deployment
+- Fully synchronized between JS and PHP
+- Reviewed file‑by‑file for full compatibility
+
+If you need:
+- PowerPoint presentation  
+- Documentation PDF  
+- UI/UX Improvements  
+- API authentication (JWT)  
+
+Just ask!

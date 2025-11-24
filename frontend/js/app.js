@@ -1,4 +1,5 @@
-const API_BASE_URL = "http://localhost:3000/api";
+// Global API base URL: always points to backend on same domain
+const API_BASE_URL = `${window.location.origin}/backend/public/index.php/api`;
 
 // Simple helper for fetch with JSON
 async function apiRequest(path, options = {}) {

@@ -1,5 +1,5 @@
 <?php
-// backend-php/routes/patients.php
+// backend/routes/patients.php
 
 function handle_patients(PDO $pdo, string $method, array $segments): void
 {

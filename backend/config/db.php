@@ -21,6 +21,7 @@ try {
         $DB_PASS,
         $options
     );
+    die ('connectd successful');    
 } catch (PDOException $e) {
     http_response_code(500);
     header('Content-Type: application/json; charset=utf-8');

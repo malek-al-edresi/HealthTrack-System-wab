@@ -1,5 +1,5 @@
 <?php
-// backend-php/routes/appointments.php
+// backend/routes/appointments.php
 
 function handle_appointments(PDO $pdo, string $method, array $segments): void
 {

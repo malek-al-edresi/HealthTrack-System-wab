@@ -1,5 +1,5 @@
 <?php
-// backend-php/routes/records.php
+// backend/routes/records.php
 
 function handle_records(PDO $pdo, string $method, array $segments): void
 {
