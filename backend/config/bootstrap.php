@@ -1,10 +1,10 @@
 <?php
-// backend-php/config/bootstrap.php
+// backend/config/bootstrap.php
 
 header('Content-Type: application/json; charset=utf-8');
 
 // CORS (adjust Access-Control-Allow-Origin for your production domain)
-header('Access-Control-Allow-Origin: *');
+header('Access-Control-Allow-Origin: http://health-sys.gt.tc/*');
 header('Access-Control-Allow-Methods: GET, POST, PUT, PATCH, DELETE, OPTIONS');
 header('Access-Control-Allow-Headers: Content-Type, Authorization');
 
