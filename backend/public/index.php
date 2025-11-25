@@ -6,18 +6,15 @@ require __DIR__ . '/../config/bootstrap.php';
 $method = $_SERVER['REQUEST_METHOD'];
 $uri    = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
 
-// ✅ تعديل خاص لـ InfinityFree: إزالة المسار الكامل حتى 'public' و 'index.php'
 $basePath = '/backend/public';
 if (strpos($uri, $basePath) === 0) {
     $uri = substr($uri, strlen($basePath));
 }
 
-// ✅ إزالة '/index.php' إذا كان موجودًا في البداية (بعد إزالة basePath)
 if (strpos($uri, '/index.php') === 0) {
     $uri = substr($uri, strlen('/index.php'));
 }
 
-// إذا كان الـ URI فارغًا بعد الحذف (أي دخل المستخدم على /backend-php/public فقط)
 if ($uri === '') {
     $uri = '/';
 }
