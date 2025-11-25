@@ -2,7 +2,7 @@
 // backend/public/index.php
 
 require __DIR__ . '/../config/bootstrap.php';
-
+   
 $method = $_SERVER['REQUEST_METHOD'];
 $uri    = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
 
