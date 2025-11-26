@@ -2,7 +2,7 @@
 <html lang="en" dir="ltr">
 <head>
   <meta charset="UTF-8" />
-  <title>HealthTrack – Smart Health Record & Medication Reminder</title>
+  <title data-i18n="title_full">HealthTrack – Smart Health Record & Medication Reminder</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <link rel="stylesheet" href="frontend/css/style.css" />
 </head>
@@ -10,76 +10,82 @@
   <header class="ht-header">
     <div class="container header-inner">
       <div>
-        <h1>HealthTrack</h1>
-        <p>Smart Personal Health Record & Medication Reminder System</p>
+        <h1 data-i18n="app_name">HealthTrack</h1>
+        <p data-i18n="app_tagline">Smart Personal Health Record & Medication Reminder System</p>
       </div>
       <nav class="role-switcher">
-        <button data-role="patient" class="active">Patient</button>
-        <button data-role="doctor">Doctor</button>
-        <button data-role="family">Family</button>
+        <button data-role="patient" class="active" data-i18n="btn_role_patient">Patient</button>
+        <button data-role="doctor" data-i18n="btn_role_doctor">Doctor</button>
+        <button data-role="family" data-i18n="btn_role_family">Family</button>
       </nav>
+      <div class="language-selector">
+        <select id="languageSelector">
+          <option value="en" data-i18n="lang_en">English</option>
+          <option value="ar" data-i18n="lang_ar">العربية</option>
+        </select>
+      </div>
     </div>
   </header>
 
   <main class="container">
     <section class="card" id="overview">
-      <h2>Overview</h2>
-      <p>
+      <h2 data-i18n="overview_title">Overview</h2>
+      <p data-i18n="overview_text">
         HealthTrack helps chronic patients and seniors keep all their medical
         history, prescriptions, lab results, and doctor visits in one place.
         It also provides smart medication and appointment reminders, and
         allows doctors and families to collaborate around the patient's care.
       </p>
       <div class="pill-row">
-        <span class="pill">Smart reminders</span>
-        <span class="pill">Chronic patients</span>
-        <span class="pill">Elderly support</span>
-        <span class="pill">Family–Doctor link</span>
+        <span class="pill" data-i18n="pill_smart_reminders">Smart reminders</span>
+        <span class="pill" data-i18n="pill_chronic_patients">Chronic patients</span>
+        <span class="pill" data-i18n="pill_elderly_support">Elderly support</span>
+        <span class="pill" data-i18n="pill_family_doctor_link">Family–Doctor link</span>
       </div>
     </section>
 
     <!-- Patient Interface -->
     <section class="card role-section" data-role="patient">
-      <h2>Patient Portal</h2>
+      <h2 data-i18n="patient_portal_title">Patient Portal</h2>
       <div class="grid-2">
         <div>
-          <h3>Register / Update Patient</h3>
+          <h3 data-i18n="patient_register_title">Register / Update Patient</h3>
           <form id="patientForm" class="form-grid">
             <input type="hidden" id="patientId" />
             <div class="form-group">
-              <label for="patientName">Full name</label>
+              <label for="patientName" data-i18n="label_full_name">Full name</label>
               <input type="text" id="patientName" required />
             </div>
             <div class="form-group">
-              <label for="patientAge">Age</label>
+              <label for="patientAge" data-i18n="label_age">Age</label>
               <input type="number" id="patientAge" min="0" required />
             </div>
             <div class="form-group">
-              <label for="patientType">Patient Type</label>
+              <label for="patientType" data-i18n="label_patient_type">Patient Type</label>
               <select id="patientType" required>
-                <option value="">Select</option>
-                <option value="chronic">Chronic disease</option>
-                <option value="senior">Senior / elderly</option>
+                <option value="" data-i18n="opt_select">Select</option>
+                <option value="chronic" data-i18n="opt_patient_chronic">Chronic disease</option>
+                <option value="senior" data-i18n="opt_patient_senior">Senior / elderly</option>
               </select>
             </div>
             <div class="form-group full-width">
-              <label for="patientConditions">Main conditions</label>
-              <input type="text" id="patientConditions" placeholder="Example: Diabetes, Hypertension" />
+              <label for="patientConditions" data-i18n="label_main_conditions">Main conditions</label>
+              <input type="text" id="patientConditions" placeholder="Example: Diabetes, Hypertension" data-i18n-placeholder="ph_main_conditions" />
             </div>
-            <button class="btn-primary" type="submit">Save patient</button>
+            <button class="btn-primary" type="submit" data-i18n="btn_save_patient">Save patient</button>
           </form>
         </div>
         <div>
-          <h3>Patients List</h3>
+          <h3 data-i18n="patients_list_title">Patients List</h3>
           <div class="table-wrapper">
             <table id="patientsTable">
               <thead>
                 <tr>
-                  <th>Name</th>
-                  <th>Age</th>
-                  <th>Type</th>
-                  <th>Conditions</th>
-                  <th>Actions</th>
+                  <th data-i18n="th_patient_name">Name</th>
+                  <th data-i18n="th_patient_age">Age</th>
+                  <th data-i18n="th_patient_type">Type</th>
+                  <th data-i18n="th_patient_conditions">Conditions</th>
+                  <th data-i18n="th_patient_actions">Actions</th>
                 </tr>
               </thead>
               <tbody>
@@ -93,52 +99,52 @@
 
     <!-- Doctor Interface -->
     <section class="card role-section hidden" data-role="doctor">
-      <h2>Doctor Portal</h2>
-      <p>
+      <h2 data-i18n="doctor_portal_title">Doctor Portal</h2>
+      <p data-i18n="doctor_portal_text">
         Doctors can review patients, add or update medical records, and manage
         medication & appointment plans.
       </p>
       <div class="grid-2">
         <div>
-          <h3>Add / Update Medical Record</h3>
+          <h3 data-i18n="record_form_title">Add / Update Medical Record</h3>
           <form id="recordForm" class="form-grid">
             <div class="form-group">
-              <label for="recordPatientId">Patient ID</label>
+              <label for="recordPatientId" data-i18n="label_record_patient_id">Patient ID</label>
               <input type="number" id="recordPatientId" required />
             </div>
             <div class="form-group">
-              <label for="recordType">Record Type</label>
+              <label for="recordType" data-i18n="label_record_type">Record Type</label>
               <select id="recordType" required>
-                <option value="">Select</option>
-                <option value="visit">Visit / Consultation</option>
-                <option value="prescription">Prescription</option>
-                <option value="lab">Lab result</option>
+                <option value="" data-i18n="opt_select">Select</option>
+                <option value="visit" data-i18n="opt_record_visit">Visit / Consultation</option>
+                <option value="prescription" data-i18n="opt_record_prescription">Prescription</option>
+                <option value="lab" data-i18n="opt_record_lab">Lab result</option>
               </select>
             </div>
             <div class="form-group full-width">
-              <label for="recordDetails">Details</label>
+              <label for="recordDetails" data-i18n="label_record_details">Details</label>
               <textarea id="recordDetails" rows="3" required></textarea>
             </div>
-            <button class="btn-primary" type="submit">Save record</button>
+            <button class="btn-primary" type="submit" data-i18n="btn_save_record">Save record</button>
           </form>
         </div>
         <div>
-          <h3>Patient Records</h3>
+          <h3 data-i18n="records_title">Patient Records</h3>
           <div class="form-inline">
             <div class="form-group">
-              <label for="recordsPatientSearch">Patient ID</label>
+              <label for="recordsPatientSearch" data-i18n="label_records_patient_search">Patient ID</label>
               <input type="number" id="recordsPatientSearch" />
             </div>
-            <button id="loadRecordsBtn" class="btn-secondary">Load records</button>
+            <button id="loadRecordsBtn" class="btn-secondary" data-i18n="btn_load_records">Load records</button>
           </div>
           <div class="table-wrapper">
             <table id="recordsTable">
               <thead>
                 <tr>
                   <th>ID</th>
-                  <th>Type</th>
-                  <th>Details</th>
-                  <th>Date</th>
+                  <th data-i18n="th_record_type">Type</th>
+                  <th data-i18n="th_record_details">Details</th>
+                  <th data-i18n="th_record_date">Date</th>
                 </tr>
               </thead>
               <tbody>
@@ -152,52 +158,52 @@
 
     <!-- Family Interface -->
     <section class="card role-section hidden" data-role="family">
-      <h2>Family Portal</h2>
-      <p>
+      <h2 data-i18n="family_portal_title">Family Portal</h2>
+      <p data-i18n="family_portal_text">
         Family members can monitor medications and appointments, and see
         which doctor is responsible for their loved ones.
       </p>
       <div class="grid-2">
         <div>
-          <h3>Link Family to Doctor</h3>
+          <h3 data-i18n="family_link_title">Link Family to Doctor</h3>
           <form id="familyDoctorForm" class="form-grid">
             <div class="form-group">
-              <label for="familyName">Family name</label>
+              <label for="familyName" data-i18n="label_family_name">Family name</label>
               <input type="text" id="familyName" required />
             </div>
             <div class="form-group">
-              <label for="doctorName">Designated doctor</label>
+              <label for="doctorName" data-i18n="label_doctor_name">Designated doctor</label>
               <input type="text" id="doctorName" required />
             </div>
-            <button class="btn-primary" type="submit">Save link</button>
+            <button class="btn-primary" type="submit" data-i18n="btn_save_link">Save link</button>
           </form>
         </div>
         <div>
-          <h3>Medication & Appointment Reminders</h3>
+          <h3 data-i18n="family_reminders_title">Medication & Appointment Reminders</h3>
           <form id="reminderForm" class="form-grid">
             <div class="form-group">
-              <label for="reminderPatientId">Patient ID</label>
+              <label for="reminderPatientId" data-i18n="label_reminder_patient_id">Patient ID</label>
               <input type="number" id="reminderPatientId" required />
             </div>
             <div class="form-group">
-              <label for="reminderType">Reminder Type</label>
+              <label for="reminderType" data-i18n="label_reminder_type">Reminder Type</label>
               <select id="reminderType" required>
-                <option value="">Select</option>
-                <option value="medication">Medication</option>
-                <option value="appointment">Appointment</option>
+                <option value="" data-i18n="opt_select">Select</option>
+                <option value="medication" data-i18n="opt_reminder_medication">Medication</option>
+                <option value="appointment" data-i18n="opt_reminder_appointment">Appointment</option>
               </select>
             </div>
             <div class="form-group">
-              <label for="reminderTime">Reminder time</label>
+              <label for="reminderTime" data-i18n="label_reminder_time">Reminder time</label>
               <input type="datetime-local" id="reminderTime" required />
             </div>
             <div class="form-group full-width">
-              <label for="reminderNote">Note</label>
-              <input type="text" id="reminderNote" placeholder="Example: Blood pressure tablet" />
+              <label for="reminderNote" data-i18n="label_reminder_note">Note</label>
+              <input type="text" id="reminderNote" placeholder="Example: Blood pressure tablet" data-i18n-placeholder="ph_reminder_note" />
             </div>
-            <button class="btn-primary" type="submit">Schedule reminder</button>
+            <button class="btn-primary" type="submit" data-i18n="btn_schedule_reminder">Schedule reminder</button>
           </form>
-          <p class="helper-text">
+          <p class="helper-text" data-i18n="helper_notifications">
             Web notifications are used for on-screen alerts. Please allow
             notifications when prompted by your browser.
           </p>
@@ -208,30 +214,30 @@
 
     <!-- File Uploads Section -->
     <section class="card">
-      <h2>Upload Prescriptions & Lab Results</h2>
-      <p>
+      <h2 data-i18n="uploads_title">Upload Prescriptions & Lab Results</h2>
+      <p data-i18n="uploads_text">
         Patients (or clinic staff) can upload files such as prescriptions,
         lab reports, and scan images. Files are stored on the server and
         linked to the patient record.
       </p>
       <form id="uploadForm" class="form-inline">
         <div class="form-group">
-          <label for="uploadPatientId">Patient ID</label>
+          <label for="uploadPatientId" data-i18n="label_upload_patient_id">Patient ID</label>
           <input type="number" id="uploadPatientId" required />
         </div>
         <div class="form-group">
-          <label for="fileInput">Select file</label>
+          <label for="fileInput" data-i18n="label_file_input">Select file</label>
           <input type="file" id="fileInput" required />
         </div>
-        <button class="btn-primary" type="submit">Upload file</button>
+        <button class="btn-primary" type="submit" data-i18n="btn_upload_file">Upload file</button>
       </form>
       <div class="table-wrapper">
         <table id="uploadsTable">
           <thead>
             <tr>
-              <th>File</th>
-              <th>Patient</th>
-              <th>Date</th>
+              <th data-i18n="th_upload_file">File</th>
+              <th data-i18n="th_upload_patient">Patient</th>
+              <th data-i18n="th_record_date">Date</th>
             </tr>
           </thead>
           <tbody>
@@ -244,10 +250,12 @@
 
   <footer class="ht-footer">
     <div class="container">
-      <p>Final Project – IST224 – HealthTrack System</p>
+      <p data-i18n="footer_text">Final Project – IST224 – HealthTrack System</p>
     </div>
   </footer>
+  <div id="google_translate_element" style="display: none;"></div>
 
+  <script src="frontend/js/lang.js"></script>
   <script src="frontend/js/app.js"></script>
   <script src="frontend/js/patients.js"></script>
   <script src="frontend/js/records.js"></script>
