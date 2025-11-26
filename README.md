@@ -132,11 +132,3 @@ If you need:
 - API authentication (JWT)  
 
 
----
-
-## 🤙🏻 Call Me  
-- Linkedin  : www.linkedin.com/in/malek-al-edresi
-- Call      : +967-778888730
-- Instagram : dde.mt
-
-Just ask!
