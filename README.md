@@ -39,9 +39,11 @@ HealthTrack/
 ├── frontend/
 │   ├── js/
 │   │   ├── app.js
+│   │   ├── lang.js
 │   │   ├── patients.js
 │   │   ├── records.js
-│   │   └── reminders.js
+│   │   ├── reminders.js
+│   │   └── translation.json
 │   ├── css/
 │   │   └── style.css
 │
